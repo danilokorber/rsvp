@@ -1,0 +1,41 @@
+<div class="flex absolute w-screen h-screen bg-gray-300 bg-opacity-60 z-50" *ngIf="this.isLoading">
+  <fa-icon class="m-auto" [icon]="this.loading" [spin]="true" size="6x"></fa-icon>
+</div>
+
+<div class="flex flex-col w-screen h-screen bg-gradient-to-b from-blue-100 via-blue-100 to-blue-300">
+  <div class="mt-8 text-center" *ngIf="this.invitation">
+    <div class="mb-4 text-6xl">😜 😍 😂</div>
+    <div class="mb-8 text-2xl">Hallo {{ this.invitation.name }}, kommst du zu meiner Party?</div>
+    <div class="grid grid-cols-2">
+      <div>
+        <button (click)="this.confirm(true)" class="bg-gradient-to-b text-gray-50 p-4 rounded-md shadow-lg outline-none" [class]="this.classYes">
+          <div class="text-6xl mb-2">🎉</div>
+          Ja, natürlich!
+        </button>
+      </div>
+      <div>
+        <button (click)="this.confirm(false)" class="bg-gradient-to-b text-gray-50 p-4 rounded-md shadow-lg outline-none" [class]="this.classNo">
+          <div class="text-6xl mb-2">💔</div>
+          Leider nicht...
+        </button>
+      </div>
+      <div class="text-center text-xs mt-2">
+        <div *ngIf="this.invitation && this.hasAnswered && this.invitation.hasConfirmed">🟢</div>
+      </div>
+      <div class="text-center text-xs mt-2"><div *ngIf="this.invitation && this.hasAnswered && !this.invitation.hasConfirmed">🔴</div></div>
+    </div>
+  </div>
+
+  <div class="mt-6 text-center" *ngIf="this.invitation && this.hasAnswered">
+    <div class="mb-8 text-xl px-4" *ngIf="this.invitation.hasConfirmed">
+      <div class="text-6xl mb-2">🥰</div>
+      Super, ich freue mich schon!<br />
+      <span class="text-base">Nicht vergessen, wenn es am Freitag regnet, dann am Samstag.</span>
+      <div class="text-xs mt-2">Bestätigung am {{ this.invitation.updatedAt | date: 'dd.MM.yy HH:mm' }} eingegangen.</div>
+    </div>
+    <div class="mb-8 text-2xl px-4" *ngIf="!this.invitation.hasConfirmed">
+      <div class="text-6xl mb-2">🙁</div>
+      Schade, dass du dieses Mal nicht kommen kannst!
+    </div>
+  </div>
+</div>
