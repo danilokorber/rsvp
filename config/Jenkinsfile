@@ -56,7 +56,7 @@ pipeline {
 		stage("Lint") {
 			steps{
 				script {
-					sh "npm run sonar"
+					//sh "npm run sonar"
 				}
 			}
 		}
