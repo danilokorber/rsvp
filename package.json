@@ -31,6 +31,7 @@
     "start": "ng serve",
     "ssl": "ng serve --ssl --ssl-key ./config/localhost.key --ssl-cert ./config/localhost.crt",
     "build": "ng build",
+    "build:prod": "ng build --prod --output-path=dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "sonar": "sonar-scanner -Dproject.settings=./config/sonar.properties"
@@ -51,7 +52,6 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "rxjs": "^6.6.6",
-    "tailwindcss": "^2.1.4",
     "tslib": "^2.1.0",
     "zone.js": "^0.11.4"
   },
@@ -67,6 +67,8 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "sonar-scanner": "^3.1.0",
+    "tailwindcss": "^2.1.4",
     "typescript": "~4.2.3"
   }
 }
