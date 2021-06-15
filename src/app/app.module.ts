@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './root/app.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SaraComponent } from './sara/sara.component';
 
 @NgModule({
-  declarations: [AppComponent, ConfirmComponent],
+  declarations: [AppComponent, ConfirmComponent, SaraComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
