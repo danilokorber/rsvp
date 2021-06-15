@@ -72,7 +72,7 @@ pipeline {
 		stage("Build docker") {
 			steps{
 				script {
-					sh "docker build -t ${props.jenkins.nexus.imageGroup}/${props.name} ."
+					sh "docker build -t ${props.jenkins.nexus.imageGroup}/${props.name} ./config"
 					sh "docker tag ${props.jenkins.nexus.imageGroup}/${props.name} ${props.jenkins.nexus.hostname}:${props.jenkins.nexus.hostedPort}/${props.jenkins.nexus.imageGroup}/${props.name}:${props.version}"
 					sh "docker tag ${props.jenkins.nexus.imageGroup}/${props.name} ${props.jenkins.nexus.hostname}:${props.jenkins.nexus.hostedPort}/${props.jenkins.nexus.imageGroup}/${props.name}:latest"
 					sh "docker push ${props.jenkins.nexus.hostname}:${props.jenkins.nexus.hostedPort}/${props.jenkins.nexus.imageGroup}/${props.name}:${props.version}"

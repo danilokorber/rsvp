@@ -23,13 +23,11 @@ export class ConfirmComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Invitation ID:', this.invitationId);
     this.svc.getInvitation(this.invitationId ?? '').then((invitation) => {
       this.invitation = invitation;
       this.hasAnswered = 'hasConfirmed' in this.invitation;
       this.title.setTitle(invitation.event);
       this.setButtonClass();
-      console.log(this.invitation);
       this.isLoading = false;
     });
   }

@@ -3,8 +3,8 @@
 FROM nginx:latest
 
 # override default configuration
-COPY ./config/nginx.conf /etc/nginx/nginx.conf
-COPY ./config/security-headers.conf /etc/nginx/security-headers.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./security-headers.conf /etc/nginx/security-headers.conf
 
 # using nginx envsubst for environment-variables inside the configuration.
 # the DOLLAR env-var is used as a workaround to still be able to use the $ character
@@ -16,6 +16,6 @@ RUN chmod -R g=u /var/cache/nginx /var/log/nginx /etc/nginx && \
     chmod g=u /var/run
 
 # copy the web-application
-COPY ./dist /usr/share/nginx/html
+COPY ../dist /usr/share/nginx/html
 
 #EXPOSE 8080
