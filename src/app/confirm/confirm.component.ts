@@ -36,11 +36,9 @@ export class ConfirmComponent implements OnInit {
     if (this.hasAnswered && this.invitation.hasConfirmed) {
       this.classYes = 'from-green-700 to-green-600';
       this.classNo = 'from-red-600 to-red-700';
-      console.log('confirmed');
     } else if (this.hasAnswered && !this.invitation.hasConfirmed) {
       this.classYes = 'from-green-600 to-green-700';
       this.classNo = 'from-red-700 to-red-600';
-      console.log('declined');
     } else {
       this.classYes = 'from-green-600 to-green-700';
       this.classNo = 'from-red-600 to-red-700';
