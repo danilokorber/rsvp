@@ -3,8 +3,11 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   important: true,
   mode: 'jit',
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: ['./src/**/*.html', './src/**/*.ts'],
+  },
+  darkMode: 'media', // false or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -31,10 +34,83 @@ module.exports = {
         pink: colors.pink,
         rose: colors.rose,
       },
+      minWidth: {
+        12: '3rem',
+        20: '5rem',
+        44: '11rem',
+      },
+      width: {
+        18: '4.5rem',
+      },
+    },
+    boxShadow: {
+      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+      DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+      md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+      none: 'none',
+      /* Large Colored Shadows */
+      'lg-blue-gray': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(69, 90, 100, 0.6)`,
+      'lg-gray': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(97, 97, 97, 0.6)`,
+      'lg-brown': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(93, 64, 55, 0.6)`,
+      'lg-deep-orange': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(230, 74, 25, 0.6)`,
+      'lg-orange': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(245, 122, 0, 0.6)`,
+      'lg-amber': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(255, 160, 0, 0.6)`,
+      'lg-yellow': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(251, 192, 45, 0.6)`,
+      'lg-lime': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(175, 180, 43, 0.6)`,
+      'lg-light-green': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(104, 159, 56, 0.6)`,
+      'lg-green': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(56, 142, 60, 0.6)`,
+      'lg-teal': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(0, 121, 107, 0.6)`,
+      'lg-cyan': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(0, 151, 167, 0.6)`,
+      'lg-light-blue': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(2, 136, 209, 0.6)`,
+      'lg-blue': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(25, 118, 210, 0.6)`,
+      'lg-indigo': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(48, 63, 159, 0.6)`,
+      'lg-deep-purple': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(81, 45, 168, 0.6)`,
+      'lg-purple': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(123, 31, 162, 0.6)`,
+      'lg-pink': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(194, 24, 91, 0.6)`,
+      'lg-red': `0 12px 22px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 13px 24px -11px rgba(211, 47, 47, 0.6)`,
+      /* Medium Colored Shadows */
+      'md-blue-gray': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(96, 125, 139, 0.2)`,
+      'md-gray': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(158, 158, 158, 0.2)`,
+      'md-brown': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(121, 85, 72, 0.2)`,
+      'md-deep-orange': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(255, 87, 36, 0.2)`,
+      'md-orange': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(255, 152, 0, 0.2)`,
+      'md-amber': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(255, 193, 7, 0.2)`,
+      'md-yellow': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(255, 235, 59, 0.2)`,
+      'md-lime': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(205, 220, 57, 0.2)`,
+      'md-light-green': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(139, 195, 74, 0.2)`,
+      'md-green': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(76, 175, 80, 0.2)`,
+      'md-teal': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(0, 150, 136, 0.2)`,
+      'md-cyan': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(0, 188, 212, 0.2)`,
+      'md-light-blue': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(3, 169, 244, 0.2)`,
+      'md-blue': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(33, 150, 243, 0.2)`,
+      'md-indigo': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(63, 81, 181, 0.2)`,
+      'md-deep-purple': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(103, 58, 183, 0.2)`,
+      'md-purple': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(156, 39, 176, 0.2)`,
+      'md-pink': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(233, 30, 99, 0.2)`,
+      'md-red': `0 6px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 5px -2px rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(244, 67, 54, 0.2)`,
+    },
+    fontFamily: {
+      sans: ['Titillium Web'],
+    },
+    fontWeight: {
+      'extra-light': 200,
+      light: 300,
+      normal: 400,
+      semibold: 600,
+      bold: 700,
+      black: 900,
     },
   },
-  variants: {
-    extend: {},
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+    defaultLineHeights: true,
+    standardFontWeights: true,
   },
+
+  variants: {},
   plugins: [],
 };
