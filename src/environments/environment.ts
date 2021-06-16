@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://localhost:8080/api/v1/rsvp',
+  url: 'https://platypus-api.korber.com.br/api/v1/rsvp',
 };
 
 /*

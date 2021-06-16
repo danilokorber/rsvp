@@ -3,9 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { AppComponent } from './root/app.component';
 import { SaraComponent } from './sara/sara.component';
+import { ShowConfirmationsComponent } from './show-confirmations/show-confirmations.component';
 
 const routes: Routes = [
-  { path: 'Sara', component: SaraComponent, children: [{ path: 'Confirm/:invitationId', component: ConfirmComponent }] },
+  {
+    path: 'Sara',
+    component: SaraComponent,
+    children: [{ path: 'Confirm/:invitationId', component: ConfirmComponent }],
+  },
+  { path: 'ShowConfirmations', component: ShowConfirmationsComponent, pathMatch: 'full' },
   { path: '**', component: AppComponent },
 ];
 

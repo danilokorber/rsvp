@@ -17,4 +17,8 @@ export class RsvpService {
   setConfirmation(invitationId: string, confirm: boolean): Promise<any> {
     return this.http.post(this.url + '/invitation/' + invitationId + '?confirm=' + confirm, null).toPromise();
   }
+
+  getInvitationsFrom(eventId: string): Promise<any> {
+    return this.http.get(this.url + '/event/' + eventId).toPromise();
+  }
 }

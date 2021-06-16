@@ -1,0 +1,20 @@
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+  <div class="flex flex-col p-4" *ngFor="let i of this.invitations">
+    <div
+      class="flex m-auto rounded-full w-24 h-24 bg-gradient-to-b shadow-md"
+      [class]="
+        i.updatedAt ? (i.hasConfirmed ? 'from-green-600 to-green-700 text-white' : 'from-red-600 to-red-700 text-white') : 'from-gray-200 to-gray-300'
+      "
+    >
+      <div class="m-auto text-center text-6xl">
+        {{ i.name.substring(0, 1) }}
+      </div>
+    </div>
+    <div class="text-center text-sm mt-2">
+      {{ i.name }}
+    </div>
+    <div class="text-center text-xs mt-2">
+      {{ (i.updatedAt | date: 'dd/MM/yyyy HH:mm') || 'Aguardando...' }}
+    </div>
+  </div>
+</div>
