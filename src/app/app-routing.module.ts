@@ -6,6 +6,7 @@ import { SaraComponent } from './sara/sara.component';
 import { ShowConfirmationsComponent } from './show-confirmations/show-confirmations.component';
 
 const routes: Routes = [
+  { path: 'ShowConfirmations', redirectTo: '/Sara9/ShowConfirmations', pathMatch: 'full' },
   {
     path: ':event',
     component: SaraComponent,
@@ -14,7 +15,6 @@ const routes: Routes = [
       { path: 'ShowConfirmations', component: ShowConfirmationsComponent, pathMatch: 'full' },
     ],
   },
-  { path: 'ShowConfirmations', redirectTo: '/Sara9/ShowConfirmations', pathMatch: 'full' },
   { path: '**', component: AppComponent },
 ];
 
