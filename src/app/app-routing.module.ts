@@ -7,9 +7,9 @@ import { ShowConfirmationsComponent } from './show-confirmations/show-confirmati
 
 const routes: Routes = [
   {
-    path: 'Sara',
+    path: ':event',
     component: SaraComponent,
-    children: [{ path: 'Confirm/:invitationId', component: ConfirmComponent }],
+    children: [{ path: 'Confirm/:invitationId', component: ConfirmComponent, pathMatch: 'full' }],
   },
   { path: 'ShowConfirmations', component: ShowConfirmationsComponent, pathMatch: 'full' },
   { path: '**', component: AppComponent },
