@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RsvpService } from '../rsvp.service';
 
 @Component({
@@ -8,10 +9,12 @@ import { RsvpService } from '../rsvp.service';
 })
 export class ShowConfirmationsComponent implements OnInit {
   invitations: any[] = [];
-  constructor(private _svc: RsvpService) {}
+  constructor(private _svc: RsvpService, private _router: Router) {}
 
   ngOnInit(): void {
-    this._svc.getInvitationsFrom('Sara').then((invitations) => {
+    let eventId: string = this._router.url.split('/')[1];
+
+    this._svc.getInvitationsFrom(eventId).then((invitations) => {
       this.invitations = invitations;
       console.log(this.invitations);
     });
