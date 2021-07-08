@@ -10,10 +10,11 @@ const routes: Routes = [
   {
     path: ':event',
     component: SaraComponent,
-    children: [
-      { path: 'Confirm/:invitationId', component: ConfirmComponent, pathMatch: 'full' },
-      { path: 'ShowConfirmations', component: ShowConfirmationsComponent, pathMatch: 'full' },
-    ],
+    children: [{ path: 'Confirm/:invitationId', component: ConfirmComponent, pathMatch: 'full' }],
+  },
+  {
+    path: ':event',
+    children: [{ path: 'ShowConfirmations', component: ShowConfirmationsComponent, pathMatch: 'full' }],
   },
   { path: '**', component: AppComponent },
 ];
